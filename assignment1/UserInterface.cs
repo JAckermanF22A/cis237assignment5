@@ -77,27 +77,60 @@ namespace assignment1
             return new string[] { id, description, pack };
         }
 
-        //Display Import Success
-        public void DisplayImportSuccess()
-        {
-            Console.WriteLine();
-            Console.WriteLine("Wine List Has Been Imported Successfully");
-        }
-
-        //Display Import Error
-        public void DisplayImportError()
-        {
-            Console.WriteLine();
-            Console.WriteLine("There was an error importing the CSV");
-        }
-
         //Display All Items
-        public void DisplayAllItems(string[] allItemsOutput)
+        public void DisplayAllItems(BeverageJAckermanEntities beverageEntity)
         {
             Console.WriteLine();
-            foreach (string itemOutput in allItemsOutput)
+
+            int counter = 0;
+            int alreadyDisplayed = 0;
+
+            string userInput = "";
+
+            bool exitBool = false;
+
+            foreach (Beverage beverage in beverageEntity.Beverages)
             {
-                Console.WriteLine(itemOutput);
+                if(exitBool != true)
+                {
+                    if (counter != 200)
+                    {
+                        Console.WriteLine(beverage.name + " " + beverage.pack + " " + beverage.price);
+                        counter++;
+                        alreadyDisplayed++;
+                    }
+                    else
+                    {
+                        userInput = "";
+                        while (userInput != "y" && exitBool != true)
+                        {
+                            Console.WriteLine(alreadyDisplayed + "items have been displayed.");
+                            Console.WriteLine("Would you like to continue displaying wine items from the database?");
+                            Console.WriteLine("y/n?");
+
+                            userInput = Console.ReadLine();
+
+                            if (userInput == "y")
+                            {
+                                counter = 0;
+                            }
+                            else if (userInput == "n")
+                            {
+                                exitBool = true;
+                            }
+                            else
+                            {
+                                Console.WriteLine("Error: Please enter y or n");
+                            }
+                        }
+                        Console.WriteLine("--------------------------------------------------------------------------------------------------------");
+                    }
+                }
+                else
+                {
+                    return;
+                }
+                    
             }
         }
 
