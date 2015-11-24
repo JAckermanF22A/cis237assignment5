@@ -24,9 +24,6 @@ namespace assignment1
             //Expands the console for easier viewing
             Console.SetWindowSize(150, 40); 
 
-            //Set a constant for the size of the collection
-            const int wineItemCollectionSize = 4000;
-
             //Create an instance of the UserInterface class
             UserInterface userInterface = new UserInterface();
 
@@ -42,6 +39,7 @@ namespace assignment1
 
             while (choice != 6)
             {
+                beverageEntities.SaveChanges();
                 switch (choice)
                 {
                     case 1:
@@ -73,20 +71,27 @@ namespace assignment1
                         string Name;
                         decimal Price;
                         string Pack;
+
+                        //Instead of passing the values to the method, we take them out of the method after it's finished
                         userInterface.GetNewItemInformation(out ID, out Name, out Price, out Pack);
 
                         bool WineAddedBool = false;
 
                         while (WineAddedBool == false)
                         {
+                            //Creates an instance of beverage that will be used to see if the ID the user wants to use already exists
                             Beverage IDCheck = beverageEntities.Beverages.Find(ID);
+
                             if (IDCheck == null)
                             {
+                                //Create an instance of beverage to eventually add to the database
                                 Beverage newWine = new Beverage();
+
                                 newWine.id = ID;
                                 newWine.name = Name;
                                 newWine.pack = Pack;
                                 newWine.price = Price;
+
                                 beverageEntities.Beverages.Add(newWine);
                                 WineAddedBool = true;
                             }
@@ -125,7 +130,7 @@ namespace assignment1
                         if(deleteWine != null)
                         {
                             beverageEntities.Beverages.Remove(deleteWine);
-                            //Insert success UI method
+                            userInterface.DisplayDeleteSuccess();
                         }
                         else
                         {
@@ -183,6 +188,12 @@ namespace assignment1
 
                                 updateBeverage.pack = userInput;
                             }
+
+                            userInterface.DisplayUpdateSuccess();
+                        }
+                        else
+                        {
+                            userInterface.DisplayUpdateFailure();
                         }
                         break;
                     case 6:

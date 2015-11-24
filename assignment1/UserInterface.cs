@@ -78,6 +78,7 @@ namespace assignment1
             pack = Console.ReadLine();
         }
 
+        //Get the info to identify which wine item to delete
         public string GetDeleteQuery()
         {
             Console.WriteLine();
@@ -86,6 +87,7 @@ namespace assignment1
             return Console.ReadLine();
         }
 
+        //Get the info for which wine item to update
         public string GetUpdateQuery()
         {
             Console.WriteLine();
@@ -94,6 +96,31 @@ namespace assignment1
             return Console.ReadLine();
         }
 
+        //Update success message
+        public void DisplayUpdateSuccess()
+        {
+            Console.WriteLine();
+            Console.WriteLine("The wine has been successfully updated.");
+            Console.WriteLine();
+        }
+
+        //Update failed message.
+        public void DisplayUpdateFailure()
+        {
+            Console.WriteLine();
+            Console.WriteLine("No wine with that ID exists to be altered.");
+            Console.WriteLine();
+        }
+
+        //Delete successful
+        public void DisplayDeleteSuccess()
+        {
+            Console.WriteLine();
+            Console.WriteLine("The wine has been successfully deleted.");
+            Console.WriteLine();
+        }
+
+        //Get a new ID because the one the user entered is already in use
         public string GetNewID()
         {
             Console.WriteLine("What is the new items ID?");
