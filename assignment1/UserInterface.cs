@@ -11,7 +11,7 @@ namespace assignment1
 {
     class UserInterface
     {
-        const int maxMenuChoice = 5;
+        const int maxMenuChoice = 6;
         //---------------------------------------------------
         //Public Methods
         //---------------------------------------------------
@@ -55,26 +55,50 @@ namespace assignment1
         public string GetSearchQuery()
         {
             Console.WriteLine();
-            Console.WriteLine("What would you like to search for?");
+            Console.WriteLine("What is the ID of the wine you would like to search for?");
             Console.Write("> ");
             return Console.ReadLine();
         }
 
         //Get New Item Information From The User.
-        public string[] GetNewItemInformation()
+        public void GetNewItemInformation(out string id, out string name, out decimal price, out string pack)
         {
             Console.WriteLine();
-            Console.WriteLine("What is the new items Id?");
+            Console.WriteLine("What is the new items ID?");
             Console.Write("> ");
-            string id = Console.ReadLine();
-            Console.WriteLine("What is the new items Description?");
+            id = Console.ReadLine();
+            Console.WriteLine("What is the new items name?");
+            Console.WriteLine("> ");
+            name = Console.ReadLine();
+            Console.WriteLine("What is the new items Price?");
             Console.Write("> ");
-            string description = Console.ReadLine();
+            price = Decimal.Parse(Console.ReadLine());
             Console.WriteLine("What is the new items Pack?");
             Console.Write("> ");
-            string pack = Console.ReadLine();
+            pack = Console.ReadLine();
+        }
 
-            return new string[] { id, description, pack };
+        public string GetDeleteQuery()
+        {
+            Console.WriteLine();
+            Console.WriteLine("What is the ID of the wine you would you like to delete?");
+            Console.Write("> ");
+            return Console.ReadLine();
+        }
+
+        public string GetUpdateQuery()
+        {
+            Console.WriteLine();
+            Console.WriteLine("What is the ID of the wine you would you like to update?");
+            Console.Write("> ");
+            return Console.ReadLine();
+        }
+
+        public string GetNewID()
+        {
+            Console.WriteLine("What is the new items ID?");
+            Console.Write("> ");
+            return Console.ReadLine();
         }
 
         //Display All Items
@@ -95,7 +119,7 @@ namespace assignment1
                 {
                     if (counter != 200)
                     {
-                        Console.WriteLine(beverage.name + " " + beverage.pack + " " + beverage.price);
+                        Console.WriteLine(beverage.id + " " + beverage.name + " " + beverage.pack + " " + beverage.price);
                         counter++;
                         alreadyDisplayed++;
                     }
@@ -132,13 +156,6 @@ namespace assignment1
                 }
                     
             }
-        }
-
-        //Display All Items Error
-        public void DisplayAllItemsError()
-        {
-            Console.WriteLine();
-            Console.WriteLine("There are no items in the list to print");
         }
 
         //Display Item Found Success
@@ -181,11 +198,12 @@ namespace assignment1
             Console.WriteLine();
             Console.WriteLine("What would you like to do?");
             Console.WriteLine();
-            Console.WriteLine("1. Load Wine List From CSV");
-            Console.WriteLine("2. Print The Entire List Of Items");
-            Console.WriteLine("3. Search For An Item");
-            Console.WriteLine("4. Add New Item To The List");
-            Console.WriteLine("5. Exit Program");
+            Console.WriteLine("1. Print The Entire Database Of Items");
+            Console.WriteLine("2. Search For An Item");
+            Console.WriteLine("3. Add New Item To The Database");
+            Console.WriteLine("4. Delete An Item From The Database");
+            Console.WriteLine("5. Update An Item From The Database");
+            Console.WriteLine("6. Exit Program.");
         }
 
         //Display the Prompt

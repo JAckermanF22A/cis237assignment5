@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace assignment1
 {
-    class WineItemCollection : IWineCollection
+    class WineItemCollection
     {
         //Private Variables
         WineItem[] wineItems;
@@ -58,25 +58,13 @@ namespace assignment1
         }
 
         //Find an item by it's Id
-        public string FindById(string id)
+        public string FindById(string id, BeverageJAckermanEntities beverageEntities)
         {
             //Declare return string for the possible found item
             string returnString = null;
 
             //For each WineItem in wineItems
-            foreach (WineItem wineItem in wineItems)
-            {
-                //If the wineItem is not null
-                if (wineItem != null)
-                {
-                    //if the wineItem Id is the same as the search id
-                    if (wineItem.Id == id)
-                    {
-                        //Set the return string to the result of the wineItem's ToString method
-                        returnString = wineItem.ToString();
-                    }
-                }
-            }
+            
             //Return the returnString
             return returnString;
         }
