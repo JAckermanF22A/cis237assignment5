@@ -2,12 +2,7 @@
 //CIS 237
 //Assignment 1
 /*
- * The Menu Choices Displayed By The UI
- * 1. Load Wine List From CSV
- * 2. Print The Entire List Of Items
- * 3. Search For An Item
- * 4. Add New Item To The List
- * 5. Exit Program
+Jacob Ackerman
  */
 using System;
 using System.Collections.Generic;

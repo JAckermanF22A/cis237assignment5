@@ -3,7 +3,7 @@
 ## Due 11-24-2015
 
 ## Author
-
+Jacob Ackerman
 ## Description
 
 Either modify what I have in my Asignment1 key, which is included here, or bring in your files and use that to do the work.
@@ -61,7 +61,10 @@ Solution Requirements:
 
 
 ## Outside Resources Used
+http://stackoverflow.com/questions/748062/how-can-i-return-multiple-values-from-a-function-in-c
+https://msdn.microsoft.com/en-us/library/t3c3bfhx.aspx
+Needed to get multiple values to return from a method in a different class, "out" fulfilled that need.
 
 ## Known Problems, Issues, And/Or Errors in the Program
-
+Not everything that could have been done in the userinterface class was done in the user interface class, but everything works... I think.
 
